@@ -1,0 +1,59 @@
+import turtle as toru
+
+
+toru.speed(0)
+#toru.tracer(0,0)
+
+def star (angle,length,x_location,y_location):
+    frequency=int(360/angle) 
+    y=-8.75*angle*length/(2*100*10)
+    toru.bgcolor("black")
+    toru.color("pink")
+    toru.penup()
+    toru.goto(x_location,y_location)
+    toru.pendown()
+
+    for i in range (frequency):
+        toru.forward(length)
+        toru.left(180+angle)
+        
+    toru.penup()
+    toru.goto(length+x_location, y+y_location)
+    toru.left(90)
+    toru.pendown()
+    toru.color("blue")
+    toru.circle(length/2)
+    toru.penup()
+    toru.home()
+    
+
+def star_circle(a,b,c):
+    x_location,y_location=b,c
+    for i in range(3):
+        x_location+=a
+        y_location+=a
+        star(angle,length,x_location,y_location)
+    
+    for i in range(3):
+        x_location+=a
+        y_location-=a
+        star(angle,length,x_location,y_location)
+
+    for i in range(3):
+        x_location-=a
+        y_location-=a
+        star(angle,length,x_location,y_location)
+
+    for i in range(3):
+        x_location-=a
+        y_location+=a
+        star(angle,length,x_location,y_location) 
+
+
+angle=30
+length=30
+star_circle(length,0,0)
+star_circle(length,0,150)
+star_circle(length,0,-150)
+star_circle(length,-150,0)
+star_circle(length,150,0)
